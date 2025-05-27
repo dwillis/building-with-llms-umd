@@ -2,7 +2,9 @@
 
 # Tool usage
 
-This feature of LLM is *so new* that I haven't even formally announced it yet. I got the alpha together just in time for the conference.
+This feature of LLM was *so new* that I haven't even formally announced it yet. I got the alpha together just in time for the conference.
+
+**Update**: it's now launched, see [Large Language Models can run tools in your terminal with LLM 0.26](https://simonwillison.net/2025/May/27/llm-tools/).
 
 LLM systems can be expanded by giving them the ability to **execute tools**.
 
@@ -10,7 +12,7 @@ Ever heard the complaints about how LLMs are computers that can'd do math, and l
 
 Tools can solve those problems, and so many more.
 
-LLM can treat any Python function as a tool. It can grant tool access to a range of models - currently models from OpenAI, Anthropic and Gemini are supported by their relevant alpha plugins.
+LLM can treat any Python function as a tool. It can grant tool access to a range of models - currently models from OpenAI, Anthropic and Gemini are supported by their relevant plugins.
 
 ## Passing Python functions to an LLM
 
