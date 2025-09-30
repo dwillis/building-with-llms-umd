@@ -11,8 +11,8 @@ maxdepth: 3
 setup
 prompting
 prompting-python
-text-to-sql
 structured-data-extraction
+text-to-sql
 semantic-search-and-rag
 tools
 security
