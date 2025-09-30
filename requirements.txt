@@ -1,9 +1,5 @@
-llm>=0.26
-llm-gemini>=0.21
-llm-anthropic>=0.17
+llm>=0.27
 llm-cmd
-llm-github-models
-llm-ollama
 llm-docs
 llm-fragments-github
 datasette
