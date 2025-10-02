@@ -27,7 +27,8 @@ So first, be aware of this. None of these differences were semantically signific
 For each data source you work on, start by
 
 * Come up with a system prompt for extracting the data, if one hasn't been provided.
-* Perform the extraction 2 or 3 times, saving the results to different files. Look at the differences, see if you think it would be helpful to refine the system prompt.
+* Perform the extraction, see if it seems to match the data source. You might see a problem with your prompt, if so see if you can improve it. 
+* Perform the extraction 1-2 more times, saving the results to different files. Look at the differences, see if you think it would be helpful to refine the system prompt.
 * Write a script that performs the extraction 3-6 times, saving each result to a separate file. It would be good to keep these all organized, perhaps creating a directory for each data source, and numbering the results something like 0.json, 1.json, etc.
   * You could either write one script that takes command line arguments things like the system prompt, the schema and the attachment or fragment to be used, or write a separate script for each document you want to extract data from
   * You find it useful to actually parse the json object returned, augmenting with a property that contains information such as the model used and the tokens consumed, and then write that augmented json out. This will be particularly useful if you want to examine things such as comparing different models.
