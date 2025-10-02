@@ -5,7 +5,7 @@ For our week 5 project, we are going to explore extracting data from 4 different
 * [Unparsable addresses from our week 4 project](#unparsable-addresses)
 * [The FEMA emergency declaration document](#fema-emergency-declarations)
 * [A recent document describing sanctions of Maryland attorneys](#sanctions-of-maryland-attorneys)
-* [A PDF scan of 1930 census data](#1930-census-data) that is notoriously challenging to extract data from
+* [A PDF scan of a 1930 census page](#census-data-from-1930) that is notoriously challenging to extract data from
   * Note: this file describes African Americans using terminology commonly used in 1930. If you feel awkward dealing with this file or data, you are free to skip it.
 
 ## Json object returned data extraction
@@ -43,7 +43,7 @@ In Results.md, write up a short description of what differences you are seeing i
 
 ## Optional: Automate your analysis
 
-As an optional step, write code that would take the results of several calls to LLMs to extract data and then automatically apply what you found above to produce a consensus result, with low confidence results flagged. Eventually, you might want to develop a pipeline in which your code made several calls to LLMs to extract the data and then produce a consensus result. But for now, you might want to just use the files you already downloaded so as to avoid having to wait for the LLM queries each time you want to try running your code. It might be helpful to also produce summary statistics.
+Write code that would take the results of several calls to LLMs to extract data and then automatically apply what you found above to produce a consensus result, with low confidence results flagged. Eventually, you might want to develop a pipeline in which your code made several calls to LLMs to extract the data and then produce a consensus result. But for now, you might want to just use the files you already downloaded so as to avoid having to wait for the LLM queries each time you want to try running your code. It might be helpful to also produce summary statistics.
 
 It is likely that whatever you do to automate your analysis will be significantly customized for each datasource.
 
@@ -84,9 +84,9 @@ You will almost certainly seem some semantically insignificant variations, but i
 
 This example comes from [Derek's llm-playground github repository](https://github.com/dwillis/llm-playground). This is the [sanctions file](https://raw.githubusercontent.com/dwillis/llm-playground/refs/heads/main/sanctionsfy25.txt). Produce a json file with the following properties: name, sanction, date, and description. The date should be in the yyyy-mm-dd format.
 
-### 1930 Census data
+### Census data from 1930
 
-This example comes from [Derek's nicar25-pdfs github repository](https://github.com/dwillis/nicar25-pdfs). [NICAR25 is a conference on National Institute of Computer Assisted Reporting](https://www.ire.org/training/conferences/nicar-2025/). The challenge to decypher this pdf is below.
+This example comes from [Derek's nicar25-pdfs github repository](https://github.com/dwillis/nicar25-pdfs). [NICAR25 is named for the National Institute of Computer Assisted Reporting](https://www.ire.org/training/conferences/nicar-2025/) (although that organization doesn't exist anymore). The challenge to decipher this pdf is below.
 
 ![alt](https://github.com/dwillis/nicar25-pdfs/raw/main/nerdery_challenge.png)
 
