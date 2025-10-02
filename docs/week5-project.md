@@ -86,13 +86,13 @@ This example comes from [Derek's llm-playground github repository](https://githu
 
 ### Census data from 1930
 
-This example comes from [Derek's nicar25-pdfs github repository](https://github.com/dwillis/nicar25-pdfs). [NICAR25 is named for the National Institute of Computer Assisted Reporting](https://www.ire.org/training/conferences/nicar-2025/) (although that organization doesn't exist anymore). The challenge to decipher this pdf is below.
+This example comes from [Derek's nicar25-pdfs github repository](https://github.com/dwillis/nicar25-pdfs). [NICAR25 is named for the National Institute of Computer Assisted Reporting](https://www.ire.org/training/conferences/nicar-2025/) (although that organization doesn't exist anymore, it's the name of an annual conference for data journalists). The challenge to decipher this pdf is below.
 
 ![alt](https://github.com/dwillis/nicar25-pdfs/raw/main/nerdery_challenge.png)
 
 * Note: as mentioned previously this file describes African Americans using terminology commonly used in 1930. If you feel awkward dealing with this file or data, you are free to skip it.
 
-The [PDF file is here](https://raw.githubusercontent.com/dwillis/nicar25-pdfs/refs/heads/main/BlackPop1930.pd). There are several reasons this is a challenging document to extract data from. You might want to provide a straight forward scheme and instructions and see how that works before trying to fine tune the instructions. The things that look challenging to you might not be challenging to the model.
+The [PDF file is here](https://raw.githubusercontent.com/dwillis/nicar25-pdfs/refs/heads/main/BlackPop1930.pdf). There are several reasons this is a challenging document to extract data from. You might want to provide a straight forward scheme and instructions and see how that works before trying to fine tune the instructions. The things that look challenging to you might not be challenging to the model.
 
 Your ultimate goal is to generate csv or python file with at least the following entries:
 
