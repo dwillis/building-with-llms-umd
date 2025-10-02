@@ -4,12 +4,10 @@ Let's start by running some prompts using the LLM command-line interface.
 
 ## Setting a default model
 
-LLM defaults to [gpt-4o-mini](https://platform.openai.com/docs/models/gpt-4o-mini). A month ago OpenAI [released the GPT-4.1 series](https://openai.com/index/gpt-4-1/). They're a big step up from GPT-4o - in particular, they have a one million token context window which means you can feed them a *lot* more data (gpt-4o-mini was limited to 128,000 tokens).
-
-Let's switch to [gpt-4.1-mini](https://platform.openai.com/docs/models/gpt-4.1-mini) as our new default model:
+Let's switch to [gpt-5-mini](https://platform.openai.com/docs/models/gpt-5-mini) as our new default model:
 
 ```bash
-llm models default gpt-4.1-mini
+llm models default gpt-5-mini
 ```
 
 ## Running a prompt
@@ -17,7 +15,7 @@ llm models default gpt-4.1-mini
 The LLM command-line tool takes a prompt as its first argument:
 
 ```bash
-llm 'Ten pun names for a teashop run by a pelican and a walrus'
+llm 'Ten pun names for a teashop run by a terrapin and a blue crab'
 ```
 
 ## What did that do for us?
@@ -29,9 +27,9 @@ curl https://api.openai.com/v1/chat/completions \
   -H 'Content-Type: application/json' \
   -H "Authorization: Bearer $(llm keys get openai)" \
   -d '{
-    "model": "gpt-4.1-mini",
+    "model": "gpt-5-mini",
     "messages": [
-      {"role": "user", "content": "Ten pun names for a teashop run by a pelican and a walrus"}
+      {"role": "user", "content": "Ten pun names for a teashop run by a terrapin and a blue crab"}
     ]
   }'
 ```
@@ -45,7 +43,7 @@ curl https://api.openai.com/v1/chat/completions \
     "model": "gpt-4.1-mini",
     "stream": true,
     "messages": [
-      {"role": "user", "content": "Ten pun names for a teashop run by a pelican and a walrus"}
+      {"role": "user", "content": "Ten pun names for a teashop run by a terrapin and a blue crab"}
     ]
   }'
 ```
@@ -74,21 +72,21 @@ llm logs -c
 ```
 The output looks something like this:
 ```
-# 2025-05-14T13:54:58    conversation: 01jv7h7jcf20b4hbg3jnh57syh id: 01jv7h7ens68awxrk17p2pq356
+# 2025-10-02T15:13:24    conversation: 01k6jqrwpht0azk2831x2w8te0 id: 01k6jqrd0xramf70v1fxkt613k
 
-Model: **gpt-4.1-mini**
+Model: **gpt-5-mini**
 
 ## Prompt
 
-Ten pun names for a teashop run by a pelican and a walrus
+Ten pun names for a teashop run by a terrapin and a blue crab
 
 ## Response
 
-Sure! Here are ten punny teashop name ideas featuring a pelican and a walrus:
-
-1. **The Pelitea & Wally Brew**  
-2. **Beak & Tusks Tea House**  
+1. Shell & Steep
+2. Claw & Cup Tea Co.
+3. The Steeping Shell
 ...
+
 ```
 As you can see, the output is in Markdown format. I frequently share my conversation logs by pasting that into a [GitHub Gist](https://gist.github.com).
 
@@ -106,7 +104,7 @@ llm logs -c --json
 Every conversation has an ID. If you know the ID of a conversation you can retrieve its logs using `--cid ID`.
 
 ```bash
-llm logs --cid 01jv7h7jcf20b4hbg3jnh57syh
+llm logs --cid 01k6jqrd0xramf70v1fxkt613k
 ```
 The `-s` option stands for `--short` and provides a more compact view, useful for finding conversation IDs:
 
@@ -116,12 +114,12 @@ llm logs -s
 Add `-q` to search:
 
 ```bash
-llm logs -s -q 'pelican'
+llm logs -s -q 'terrapin'
 ```
 And `-n 0` to see **every** match:
 
 ```bash
-llm logs -s -q 'pelican' -n 0
+llm logs -s -q 'terrapin' -n 0
 ```
 
 ## Browsing the logs with Datasette
@@ -133,13 +131,6 @@ datasette "$(llm logs path)"
 ```
 This will start a local web server which you can visit at `https://localhost:8001/`
 
-On Codespaces you should first run this command to install a plugin to make Datasette work better in that environment:
-
-```bash
-datasette install datasette-codespaces
-# Then
-datasette "$(llm logs path)"
-```
 ## Using different models
 
 Use the `-m` option to specify a different model. You can see a list of available models by running:
@@ -151,13 +142,27 @@ Add the `--options` flag to learn more about them, including what options they s
 ```bash
 llm models list --options
 ```
-Let's get some pun names for a teashop from the more powerful `o4-mini`:
+Let's get some pun names for a teashop from the weaker model  `gpt-5-nano`:
 
 ```bash
-llm 'Ten pun names for a teashop run by a pelican and a walrus' -m o4-mini
+llm '"Ten pun names for a teashop run by a terrapin and a blue crab"' -m gpt-5-nano
 ```
-[o4-mini](https://platform.openai.com/docs/models/o4-mini) is a reasoning model, so there's a delay at the start while it "thinks" about the problem.
 
+### Logs are shared across llm installations
+
+If you have multiple projects where you are using the llm tool, by default they all share the same user directory, which is where keys and logs are stored. This makes things simpler, but can also be surprising if you had intended that a project have its own set of keys and log files. Typically, the user directory is:
+
+- **macOS**: `~/Library/Application Support/io.datasette.llm/`
+- **Linux**: `~/.config/io.datasette.llm/`
+- **Windows**: Varies based on system
+
+The command `llm logs path` will tell you the current log file path, which will be located inside the user directory.
+
+You can customize this location using the `LLM_USER_PATH` environment variable:
+
+```bash
+export LLM_USER_PATH=/path/to/my/custom/directory
+```
 
 ## Piping in content
 
@@ -167,7 +172,7 @@ The best thing about having a command-line tool for interacting with models is y
 
 A **system prompt** is a special kind of prompt that has higher weight than the rest of the prompt. It's useful for providing instructions about *what to do* with the rest of the input.
 ```bash
-cat requirements.txt | llm -s 'convert this to pyproject.toml'
+cat pyproject.toml | llm -s 'describe the libraries used by this python project'
 ```
 
 ## Prompting with an image
@@ -177,7 +182,7 @@ LLM supports **attachments**, which are files that you can attach to a prompt. A
 Let's describe a photograph:
 
 ```bash
-llm -a https://static.simonwillison.net/static/2025/two-pelicans.jpg 'Describe this image' -u
+llm -a https://www.cs.umd.edu/class/fall2025/cmsc398z/files/week5a.jpg 'Describe this image' -u
 ```
 That `-u` causes the token usage to be displayed. You can paste that token line into https://www.llm-prices.com/ and select the model to get a price estimate.
 
@@ -190,7 +195,7 @@ Fragments are mainly useful as a storage optimization: the same fragment will be
 Here's our `requirements.txt` example again, this time with a fragment:
 
 ```bash
-llm -f requirements.txt 'convert this to pyproject.toml'
+llm -f pyproject.toml 'describe the libraries used by this python project'
 ```
 The `-e` option can be used with `llm logs` to expand any fragments:
 
