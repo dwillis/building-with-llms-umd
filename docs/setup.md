@@ -7,6 +7,7 @@ To setup your environment, cd to the week5 directory, and give the commands:
 
 ```bash
 uv venv
+uv sync
 source .venv/bin/activate
 ```
 
@@ -28,7 +29,7 @@ You'll need an OpenAI API key for this workshop. You can either get your own her
 
 Or you can use a shared one created for this class. You'll need the password that is distributed in class:
 
-**[Get the workshop API key (password required)](https://tools.simonwillison.net/encrypt#zHanbpCyyYjp8EoUZAtjyakfBbuX/GszQaNoadiKi9VubDT9eLjIAei1w4f4vP+SF9UgxZ70gp4izV2YZZikz1Oz9GNfJM65sfP6omtm5/i/sDdvEzA3j6SWjx1yW+Iw1MzjIeVQk6TNTrVGpGdRKA6OuT+P3CLkWzuWxwOsL+5U5gqA9QxKS9KBANrxwfWfjO9yjNpkuVhgbOuqIZtIBqGcH2yIzT3Bunk1DSNaEGM6jWog4PKuXXm5x3lZJdps4pWoVFlnr/Y5dQfPUZETNw==)
+* [Get the workshop API key (password required)](https://tools.simonwillison.net/encrypt#zHanbpCyyYjp8EoUZAtjyakfBbuX/GszQaNoadiKi9VubDT9eLjIAei1w4f4vP+SF9UgxZ70gp4izV2YZZikz1Oz9GNfJM65sfP6omtm5/i/sDdvEzA3j6SWjx1yW+Iw1MzjIeVQk6TNTrVGpGdRKA6OuT+P3CLkWzuWxwOsL+5U5gqA9QxKS9KBANrxwfWfjO9yjNpkuVhgbOuqIZtIBqGcH2yIzT3Bunk1DSNaEGM6jWog4PKuXXm5x3lZJdps4pWoVFlnr/Y5dQfPUZETNw==)
 
 This shared key is restricted to the following models: `gpt-5-mini`, `gpt-5-nano`.
 
@@ -37,6 +38,12 @@ Key obtained, you can configure it for LLM like this:
 ```bash
 llm keys set openai
 # Paste your key here
+```
+
+Set your default model to be gpt-5-mini.
+
+```bash
+llm models default gpt-5-mini
 ```
 
 ## Testing that it worked
