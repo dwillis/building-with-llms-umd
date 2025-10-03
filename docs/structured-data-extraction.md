@@ -69,6 +69,21 @@ We will come back to making sure that we get correct results for data extraction
 
 Good models models for this kind of thing are Google's Gemini series. They can handle video and audio in addition to images and PDFs!
 
+## Structured data from images
+
+You aren't limited to extracting non-textual data. For example
+https://www.cs.umd.edu/class/fall2025/cmsc398z/files/week5b.jpg
+```bash
+llm \
+  -a https://www.cs.umd.edu/class/fall2025/cmsc398z/files/week5b.jpg \
+  --schema-multi '
+name
+number int'
+  -s 'name and count the fruit in the bowl'
+```
+
+
+
 ## Structured data extraction in Python with Pydantic
 
 When using LLM as a Python library you can set `schema=` to a Pydantic model class.
