@@ -78,7 +78,7 @@ llm \
   -a https://www.cs.umd.edu/class/fall2025/cmsc398z/files/week5b.jpg \
   --schema-multi '
 name
-number int'
+number int' \
   -s 'name and count the fruit in the bowl'
 ```
 
