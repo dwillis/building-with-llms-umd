@@ -83,7 +83,7 @@ def extract_data(model: str, system:str, attachments:llm.Attachment,  schema: st
 
 ## Formatting json
 
-This code takes a response from an llm, parses the output as json, and then converts the json back to formatted multiline json. If you wish to modify the json, such as adding additional properties, you could do so between these two lines:
+This code takes a response from an llm, parses the output as json, and then converts the json back to formatted multiline text. If you wish to modify the json, such as adding additional properties, you could do so between these two lines:
 
 ```python
     parsed = json.loads(response.text())
