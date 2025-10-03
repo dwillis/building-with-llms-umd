@@ -8,7 +8,7 @@ For our week 5 project, we are going to explore extracting data from 4 different
 * [A PDF scan of a 1930 census page](#census-data-from-1930) that is notoriously challenging to extract data from
   * Note: this file describes African Americans using terminology commonly used in 1930. If you feel awkward dealing with this file or data, you are free to skip it.
 
-## Json object returned data extraction
+## Json object returned by data extraction
 
 I have generally noted that when you ask for extraction with a multi-schema, the top level json value returned is an object, not an array, the fields of that object may not be consistent. Example requests I've gotten back from the FEMA document include:
 
